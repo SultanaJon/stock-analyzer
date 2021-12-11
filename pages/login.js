@@ -1,6 +1,7 @@
-import { Center, Square, Box, Stack, Input, InputGroup, InputRightElement, Button, ButtonGroup, Image, IconButton } from '@chakra-ui/react'
+import { Center, Square, Box, Stack, Input, InputGroup, InputRightElement, Button, ButtonGroup, Image, IconButton, VStack } from '@chakra-ui/react'
 import { ViewIcon } from '@chakra-ui/icons'
 import React from 'react'
+import Link from 'next/link'
 
 export default function LoginPage() {
     const [show, setShow] = React.useState(false)
@@ -13,10 +14,12 @@ export default function LoginPage() {
             <Square 
                 bg='white'
                 w='350px'
-                h='300px'
-                style={{borderRadius: '20px'}}>
+                h='325px'
+                style={{borderRadius: '10px'}}>
                 <Stack spacing={8}>
-                    <Image src='/vercel.svg'/>
+                    <Center>
+                        <Image src='/vercel.svg' maxWidth='150'/>
+                    </Center>
                     <Box>
                         <Stack spacing={3}>
                             <Input focusBorderColor='teal.500' variant='filled' placeholder='Email' color='teal' size='md' />
@@ -38,21 +41,29 @@ export default function LoginPage() {
                                         variant='ghost'
                                         style={{boxShadow:'none'}}
                                         onClick={handlePasswordShowClick}/>}>
-
-                                        </IconButton>
+                                    </IconButton>
                                 </InputRightElement>
                             </InputGroup>
                         </Stack>
                     </Box>
                     <Box>
-                        <ButtonGroup spacing='3'>
-                            <Button isLoading={isLoading} colorScheme='teal' variant='solid' onClick={handleSignInClick}>
-                                Sign In
-                            </Button>
-                            <Button colorScheme='teal' variant='outline'>
-                                Sign Up
-                            </Button>
-                        </ButtonGroup>
+                        <Center>
+                            <VStack w='100%'>
+                                <Button w='100%' 
+                                    isLoading={isLoading}
+                                    colorScheme='teal'
+                                    variant='solid'
+                                    onClick={handleSignInClick}>
+                                    Sign In
+                                </Button>
+                                <Button
+                                    w='100%'
+                                    colorScheme='teal'
+                                    variant='outline'>
+                                    Sign Up
+                                </Button>
+                            </VStack>
+                        </Center>
                     </Box>
                 </Stack>
             </Square>
