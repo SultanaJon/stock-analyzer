@@ -1,7 +1,16 @@
 import {initializeApp, getApps, getApp} from 'firebase/app'
+import {getAuth} from 'firebase/auth'
 import {firebaseConfig} from '../config'
 
-// intitialize firebase application
-const firebase = initializeApp(firebaseConfig)
+const firebaseApps = getApps()
+if(!firebaseApps.length){
+    console.log('initializing firebase app')
 
-export default firebase
+    // intitialize firebase application
+    initializeApp(firebaseConfig)
+}
+
+const app = getApp()
+const auth = getAuth(app)
+
+export default auth
