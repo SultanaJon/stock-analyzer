@@ -19,9 +19,10 @@ class StandardInput extends Component {
             <Input 
                 focusBorderColor={styles.borderColor}
                 variant={styles.variant}
-                placeholder={this.props.placeholder}
                 color={styles.fontColor} 
-                size={this.props.size} />
+                
+                {...this.props}
+                />
         )
     }
 }
@@ -46,11 +47,15 @@ class PasswordInput extends Component {
                     variant={styles.variant}
                     pr='4.5rem'
                     type={this.state.show ? 'text' : 'password'}
-                    placeholder={this.props.placeholder}
                     color={styles.fontColor}
+
+                    {...this.props}
                 />
-                <InputRightElement width='4.5rem'>
+                <InputRightElement 
+                    width='4.5rem'>    
+
                     <IconButton
+                        disabled={this.props.disabled}
                         variant=''
                         icon={<ViewIcon
                             h={styles.icon.height}
