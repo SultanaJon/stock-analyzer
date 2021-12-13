@@ -28,7 +28,11 @@ export default function LoginPage() {
                     <Box>
                         <Center>
                             <VStack w='100%'>
-                                <FilledButton text='Sign In'/>
+                                <FilledButton 
+                                    text='Sign In'
+                                    isLoading={isLoading}
+                                    onClick={handleSignInClick}/>
+                                    
                                 <OutlinedButton text='Sign Up'/>
                             </VStack>
                         </Center>
