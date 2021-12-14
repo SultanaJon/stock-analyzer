@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 import Link from 'next/link'
 import {StandardInput, PasswordInput} from '../components/input';
 import { FilledButton, OutlinedButton } from '../components/button';
+import LoginSignUpBox from '../components/login-signup-box';
+import Router from 'next/router'
 
 class LoginPage extends Component {
 
@@ -45,51 +47,45 @@ class LoginPage extends Component {
 
     render(){
         return (
-            <Center bg='#f2f2f2' h='100%' w='100%'>
-                <Square 
-                    bg='white'
-                    w='350px'
-                    h='325px'
-                    style={{borderRadius: '10px'}}>
+            <LoginSignUpBox>
+                <Stack spacing={8}>
+                    <Center>
+                        <Image 
+                            src='/vercel.svg' 
+                            maxWidth='150'/>
+                    </Center>
 
-                    <Stack spacing={8}>
+                    <Box>
+                        <Stack spacing={3}>
+                            <StandardInput 
+                                disabled={this.state.disabled}
+                                placeholder='Email'
+                                size='md'/>
+
+                            <PasswordInput 
+                                disabled={this.state.disabled} 
+                                placeholder='Password' 
+                                size='md'/>
+                        </Stack>
+                    </Box>
+                    
+                    <Box>
                         <Center>
-                            <Image 
-                                src='/vercel.svg' 
-                                maxWidth='150'/>
-                        </Center>
+                            <VStack w='100%'>
+                                <FilledButton 
+                                    text='Sign In'
+                                    isLoading={this.state.isLoading}
+                                    onClick={this.handleSignInClick}/>
 
-                        <Box>
-                            <Stack spacing={3}>
-                                <StandardInput 
-                                    disabled={this.state.disabled}
-                                    placeholder='Email'
-                                    size='md'/>
-
-                                <PasswordInput 
+                                <OutlinedButton 
                                     disabled={this.state.disabled} 
-                                    placeholder='Password' 
-                                    size='md'/>
-                            </Stack>
-                        </Box>
-                        
-                        <Box>
-                            <Center>
-                                <VStack w='100%'>
-                                    <FilledButton 
-                                        text='Sign In'
-                                        isLoading={this.state.isLoading}
-                                        onClick={this.handleSignInClick}/>
-    
-                                    <OutlinedButton 
-                                        disabled={this.state.disabled} 
-                                        text='Sign Up'/>
-                                </VStack>
-                            </Center>
-                        </Box>
-                    </Stack>
-                </Square>
-            </Center>
+                                    text='Sign Up'
+                                    onClick={() => Router.push('/signup')}/>
+                            </VStack>
+                        </Center>
+                    </Box>
+                </Stack>
+            </LoginSignUpBox>
         )
     }
 }
